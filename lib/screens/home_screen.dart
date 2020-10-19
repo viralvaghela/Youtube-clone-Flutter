@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:youtube/utils/data.dart';
-import 'package:youtube/widgets/videoCard.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);

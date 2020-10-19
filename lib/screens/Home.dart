@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:youtube/screens/video_playing.dart';
 import 'package:youtube/widgets/videoCard.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,6 +19,8 @@ class _HomeState extends State<Home> {
   bool isLoading = true;
   List data;
 
+// https://www.youtube.com/watch?v=rfKOl3qxyjA
+
   @override
   void initState() {
     super.initState();
@@ -34,27 +37,37 @@ class _HomeState extends State<Home> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext contextcontext) {
     return SingleChildScrollView(
-        child: isLoading == true
-            ? Center(child: CircularProgressIndicator())
-            : Column(
-                children: data.map((item) {
-                  return GestureDetector(
-                    onTap: () {
-                      print("click");
-                    },
-                    child: VideoCard(
-                      thumbnail: item['thumbnail'],
-                      title: item['title'],
-                      channelProfilePicUrl: item['channelProfilePicUrl'],
-                      channelName: item['channelName'],
-                      viewCount: item['viewCount'],
-                      uploadTime: item['uploadTime'],
-                      videoUrl: item['videoUrl'],
-                    ),
-                  );
-                }).toList(),
-              ));
+      child: isLoading == true
+          ? Center(child: CircularProgressIndicator())
+          : Column(
+              children: data.map((item) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => VideoPlaying(
+                              videoId: getVideoId(item['videoUrl']),
+                            )));
+                  },
+                  child: VideoCard(
+                    thumbnail: item['thumbnail'],
+                    title: item['title'],
+                    channelProfilePicUrl: item['channelProfilePicUrl'],
+                    channelName: item['channelName'],
+                    viewCount: item['viewCount'],
+                    uploadTime: item['uploadTime'],
+                    videoUrl: item['videoUrl'],
+                  ),
+                );
+              }).toList(),
+            ),
+    );
+  }
+
+// "https://www.youtube.com/watch?v=OtkrNQxJzBQ"
+  String getVideoId(String url) {
+    return url.substring(32);
+    // print(id);
   }
 }
