@@ -40,14 +40,19 @@ class _HomeState extends State<Home> {
             ? Center(child: CircularProgressIndicator())
             : Column(
                 children: data.map((item) {
-                  return VideoCard(
-                    thumbnail: item['thumbnail'],
-                    title: item['title'],
-                    channelProfilePicUrl: item['channelProfilePicUrl'],
-                    channelName: item['channelName'],
-                    viewCount: item['viewCount'],
-                    uploadTime: item['uploadTime'],
-                    videoUrl: item['videoUrl'],
+                  return GestureDetector(
+                    onTap: () {
+                      print("click");
+                    },
+                    child: VideoCard(
+                      thumbnail: item['thumbnail'],
+                      title: item['title'],
+                      channelProfilePicUrl: item['channelProfilePicUrl'],
+                      channelName: item['channelName'],
+                      viewCount: item['viewCount'],
+                      uploadTime: item['uploadTime'],
+                      videoUrl: item['videoUrl'],
+                    ),
                   );
                 }).toList(),
               ));
