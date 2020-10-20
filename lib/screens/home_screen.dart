@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube/screens/search_screen.dart';
 import 'package:youtube/utils/data.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -37,7 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
               icon: Icon(Icons.search),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (ctx) => SearchScreen()));
+              },
               color: Colors.grey,
               iconSize: 30),
           Padding(padding: EdgeInsets.all(8)),

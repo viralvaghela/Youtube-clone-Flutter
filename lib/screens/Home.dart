@@ -45,10 +45,15 @@ class _HomeState extends State<Home> {
               children: data.map((item) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
                         builder: (context) => VideoPlaying(
-                              videoId: getVideoId(item['videoUrl']),
-                            )));
+                          videoId: getVideoId(
+                            item['videoUrl'],
+                          ),
+                        ),
+                      ),
+                    );
                   },
                   child: VideoCard(
                     thumbnail: item['thumbnail'],
