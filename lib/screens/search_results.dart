@@ -30,7 +30,7 @@ class _SearchResultState extends State<SearchResult> {
 
   void searchVideos() async {
     var res = await http.get(
-        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=$searchQuery&type=video&key=AIzaSyBrPb6cy9xs4pZE5TgEqidUDRuWkBUTRO0");
+        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=$searchQuery&type=video&key=YOURKEY");
     var jsonData = jsonDecode(res.body);
     post = Post.fromJson(jsonData);
 
