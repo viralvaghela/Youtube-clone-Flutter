@@ -62,7 +62,7 @@ class _VideoPlayingState extends State<VideoPlaying> {
     _controller = YoutubePlayerController(
       initialVideoId: "$videoId",
       flags: const YoutubePlayerFlags(
-        mute: true,
+        mute: false,
         autoPlay: true,
         disableDragSeek: false,
         loop: false,
